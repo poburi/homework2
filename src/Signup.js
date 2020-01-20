@@ -111,7 +111,6 @@ function NormalLoginForm(props) {
             })(
               <Input
                 className="inp"
-                type="number"
                 addonBefore={<PhoneSelect onChange={handleChange} />}
               />
             )}
