@@ -53,16 +53,12 @@ function NormalLoginForm(props) {
         <div className="set-box">
           <Form.Item>
             {getFieldDecorator("username", {
-              rules: [
-                { required: true, message: "Please input your username!" }
-              ]
+              rules: [{ required: true, message: "아이디를 입력해주세요!" }]
             })(<Input placeholder="아이디" />)}
           </Form.Item>
           <Form.Item>
             {getFieldDecorator("password", {
-              rules: [
-                { required: true, message: "Please input your Password!" }
-              ]
+              rules: [{ required: true, message: "비밀번호를 입력해주세요!" }]
             })(<Input type="password" placeholder="비밀번호" />)}
           </Form.Item>
         </div>
@@ -105,9 +101,7 @@ function NormalLoginForm(props) {
 
           <Form.Item label="전화" className="inp-add-btn">
             {getFieldDecorator("phone", {
-              rules: [
-                { required: true, message: "Please input your phone number!" }
-              ]
+              rules: [{ required: true, message: "전화번호를 입력해주세요!" }]
             })(
               <Input
                 className="inp"
