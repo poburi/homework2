@@ -6,7 +6,6 @@ import "./index.css";
 import "./common.css";
 
 function NormalLoginForm(props) {
-  console.log(props);
   const { Option } = Select;
 
   function handleChange(value) {
@@ -41,8 +40,6 @@ function NormalLoginForm(props) {
   for (let i = 0; i <= 30; i++) {
     daysData[i] = 1 + i;
   }
-
-  console.log(props.form);
 
   const { getFieldDecorator } = props.form;
 
