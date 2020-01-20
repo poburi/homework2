@@ -5,7 +5,8 @@ import "antd/dist/antd.css";
 import "./index.css";
 import "./common.css";
 
-function Signup() {
+function NormalLoginForm(props) {
+  console.log(props);
   const { Option } = Select;
 
   function handleChange(value) {
@@ -41,17 +42,28 @@ function Signup() {
     daysData[i] = 1 + i;
   }
 
+  console.log(props.form);
+
+  const { getFieldDecorator } = props.form;
+
   return (
     <JoinForm>
       <Title>회원가입</Title>
-      <Form layout="vertical">
+      <Form layout="vertical" className="login-form">
         <div className="set-box">
           <Form.Item>
-            <Input placeholder="아이디" />
+            {getFieldDecorator("username", {
+              rules: [
+                { required: true, message: "Please input your username!" }
+              ]
+            })(<Input placeholder="아이디" />)}
           </Form.Item>
-
           <Form.Item>
-            <Input placeholder="비밀번호" />
+            {getFieldDecorator("password", {
+              rules: [
+                { required: true, message: "Please input your Password!" }
+              ]
+            })(<Input type="password" placeholder="비밀번호" />)}
           </Form.Item>
         </div>
 
@@ -92,10 +104,18 @@ function Signup() {
           </Form.Item>
 
           <Form.Item label="전화" className="inp-add-btn">
-            <Input
-              className="inp"
-              addonBefore={<PhoneSelect onChange={handleChange} />}
-            />
+            {getFieldDecorator("phone", {
+              rules: [
+                { required: true, message: "Please input your phone number!" }
+              ]
+            })(
+              <Input
+                className="inp"
+                type="number"
+                addonBefore={<PhoneSelect onChange={handleChange} />}
+              />
+            )}
+
             <Button className="btn btn-certify">인증</Button>
           </Form.Item>
         </LabelWrapper>
@@ -175,11 +195,19 @@ const LabelWrapper = styled.div`
   .ant-form-item {
     display: flex;
     flex-wrap: wrap;
-    align-items: center;
+    align-items: start;
 
     .ant-form-item-label {
       flex: 0 0 40px;
       text-align: left;
+      padding-top: 5px;
+      padding-bottom: 0;
+    }
+
+    .ant-form-item-required {
+      &:before {
+        display: none;
+      }
     }
 
     .ant-form-item-control-wrapper {
@@ -213,4 +241,7 @@ const TermAgree = styled.div`
   align-items: center;
   justify-content: space-between;
 `;
+
+const Signup = Form.create({ name: "normal_login" })(NormalLoginForm);
+
 export default Signup;
