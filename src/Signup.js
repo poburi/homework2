@@ -1,6 +1,7 @@
 import React from "react";
 import styled from "styled-components";
 import { Form, Button, Select, Input, Radio, Switch } from "antd";
+// import { Helmet } from "react-helmet";
 import "antd/dist/antd.css";
 import "./index.css";
 import "./common.css";
@@ -45,6 +46,9 @@ function NormalLoginForm(props) {
 
   return (
     <JoinForm>
+      {/* <Helmet>
+        <title>카카오페이 - 리액트 회원가입 페이지</title>
+      </Helmet> */}
       <Title>회원가입</Title>
       <Form layout="vertical" className="login-form">
         <div className="set-box">
